@@ -1,7 +1,7 @@
 # -
 
 
-'''
+```
 1. 데이터의 갈래길 중 잘 전달할(빠르고 안전한) 경로로 안내하기위한 최적의 경로 탐색
 2. 장치 
   1) router
@@ -15,4 +15,4 @@
   3) IGMP
   4) ARP : IP주소를 MAC주소로 FIND함 즉, 3계층주소로 2계층주소를 탐색
   5) Routing protocol : RIP, EIGRP, OSPF, ISIS, BGP, Static Routing 등등
-'''
+```
