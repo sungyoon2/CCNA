@@ -1,6 +1,6 @@
 # 2024.01.14(ICMP, ARP, Routing Protocol(정적))
 
-> <ICMP><br>
+<ICMP><br>
 ---
 ```
 1. 정의
