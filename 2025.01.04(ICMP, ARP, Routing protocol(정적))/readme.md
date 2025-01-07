@@ -58,4 +58,76 @@ ARP
 ```
 
 > 2. 종류<br>
+```
     1) 정적 routing Protocol
+        - 목적지에 대한 방향에 대한 정보를 관리자가 직접 넣어주는 것
+        - 부하가 낮으며, 우선 순위가 더 높음
+        - 단점 : 통신망 문제 발생시 유동적으로 반응을 하지 못함
+
+    2) 동적 routing Protocol
+        - Routing Protocol이 자체적으로 경로를 생성(전체네트워크를 탐색 후)
+        - 최적의 경로를 지속적으로 탐색하는 방법
+        - 부하가 높음
+        - 문제 생길시 변화를 감지(민감도가 높음) -> 차선 경로를 안내함
+```
+
+> 3. 정적 Routing protocol의 종류
+```
+    1) Sstatic : 하나의 목적지에 대한 방향으로 지정
+    2) Default : 그외의 나머지 모든 목적지에 대한 방향을 직접 넣음
+```
+
+> 4. 정적 Routing 실습
+```
+1) 기본 용어
+    - Serial port : Wan구간에서 사용하는 포트
+    - Static routing사용하는 이유 : router 2개끼리 연결시 routing을 안할시 연결이 안되기에
+    - TTL : 무한정이면 문제가 생기며, 라우터 이상의 장치를 통과할 때마다 1씩 감소하며, 0이 될시 소멸한다
+
+2) Time out이 뜨는 이유 
+    (1) IP 설정이 안되있는 경우
+    (2) 송신부 GW가 설정X
+    (3) 수신부 GW가 설정X
+    (4) Routing이 되지 않았을 때 -> 보낸 클라이언트로 ICMP Code(3)-no destination이 등장
+
+3) routing 명령어
+    (1) 모드 진입명령어
+        enable : 특권 모드 전환 -> en
+        disable : 일반 사용자 모드 전환
+        config terminal : 전역설정 모드 전환 -> conf t
+        interface 포트라벨 : Interface 설정 모드 전환 -> inter [-]
+        exit : 하위 모드로 나가기
+        end : 특권 모드로 복귀
+--------------------------------------------------------------------------------------------------------
+    (2) 라우팅 관련명령어
+        show ip route : 라우팅 테이블 확인
+        router : 동적 라우팅 프로토콜 사용
+        net [NetworkIP] : 동적 라우팅 프로토콜에 네트워크 등록
+        show ip protocols : 라우팅 프로토콜 관련 정보 확인
+        ip route [NW ID] [서브넷 마스크] [이웃라우터IP or 다음 라우터로 가는 경로] : 정적 라우팅 프로토콜 설정
+---------------------------------------------------------------------------------------------------------
+    (3) 동작상태 확인명령어
+        [일반 사용자 모드]
+          show clock 
+          show history 
+          show hosts 
+          show sessions 
+          show snmp 
+          show terminal 
+          show users 
+          show version 등
+          show version 으로 알 수있는 것들
+              라우터 타입, IOS image, 시스템 동작시간, 현재 IOS 버젼, 장착된 인터페이스,메모리량 등
+        [특권모드]
+          show ip interface
+          show interface 
+          show ip route 
+          show running-config
+              현재 설정된 상황을 종합적으로 보여줌
+          show startup-config
+----------------------------------------------------------------------------------------------------------
+    (4) 기타 명령어
+        copy r s : 저장
+        ctrl+shift+6 : 시간이 오래 지연시 작업 강제 종료
+```
+        
