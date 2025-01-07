@@ -47,7 +47,7 @@ ARP
 ```
 
 
-<Routing protocol>
+Routing protocol
 ---
 
 > 1. 개요<br>
