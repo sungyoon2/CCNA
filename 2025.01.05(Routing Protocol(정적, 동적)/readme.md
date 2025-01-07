@@ -78,16 +78,16 @@ Server(제공)     <-------------->    Client(요청)
 6) 설정 명령
   [R1]
   router rip
-  version ?
-  network ?
-  network ?
+  version 2
+  network [연결된 네트워크IP주소]
+  network [다른 Router와 연결된 경로의 nw주소]
   no auto-summary
 
   [R2]
   router rip
-  version ?
-  network ?
-  network ?
+  version 2
+  network [연결된 네트워크IP주소]
+  network [다른 Router와 연결된 경로의 nw주소]
   no auto-summary
 ```
 
