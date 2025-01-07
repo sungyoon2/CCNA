@@ -29,7 +29,7 @@ Server(제공)     <-------------->    Client(요청)
                     무언가
                     -> Service : Client의 요구사항을 만족하는 Program
 ```
-> - Server<br>
+> '-'Server<br>
   - '-'가 설치된(동작하는) 컴퓨터
 ```
 1) DNS Service/Server/System
