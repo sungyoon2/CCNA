@@ -69,6 +69,13 @@ ip nat outside
 - outside local : 내부 네트워크에서 본 외부 호스트의 ip(보통목적지 공인ip)
 - outside global : 실제 외부 호스트의 공인 ip주소
 ```
+> NAT와 ACL함께 설정시 순서<br>
+```
+1. WAN구간 IP + Routing
+2. Lan구간 IP
+3. NAT 설정
+4. ACL 설정
+```
 
 
 
