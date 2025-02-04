@@ -39,6 +39,81 @@ switchport port-security violation [정책] -> sw po vio []                --> �
 ---
 DTP-VTP
 ---
+> DTP란<br>
+- Dynamic Trunk Protocol
+- 자동으로 Trunk mode로 바꿔주는 protocol
+- => 한쪽이 Trunk mode면 자동으로 반대쪽도 Trunk mode로 바꿔주는 역할
+> DTP의 종류<br>
+```
+cf) access mode : 현재 포트를 Access mode로 지정,             DTP 송신 x, 수신 X
+- ON            : 현재포트를 강제 Trunk mode로 지정,          DTP 송신 O, 수신 X
+- AUTO (DA)     : 현재포트모드는 미지점(상대포트에 따라 결정),  DTP 송신 O, 수신 O (단, 상대포트에서 DTP를 수신받은 상태에서 동작, DTP를 먼저 전송하진 않음)
+- Desirable(DD) : 현재포트모드는 미지점(상대포트에 따라 결정),  DTP 송신 O, 수신 O (DD mode임을 DTP통신하므로, DA와 만날시 협상을 통해 Trunk mode로 변환해 줌)
+```
+> DTP모드별 관계도<br>
+```
+Access - Access : Access mode
+Trunk - Trunk   : Trunk mode
+Access - Trunk  : 통신X(해당 세그먼트에서)
+Access - DD     : Access mode
+Access - DA     : Access mode
+Trunk - DD      : Trunk mode(협상)
+Trunk - DA      : Trunk mode(협상)
+DD - DD         : Trunk mode(협상)
+DD - DA         : Trunk mode(협상)
+DA - DA         : Access mode -> DA는 DTP를 먼저 주는 경우가 없기에 기본 모드인 Access mode가 됨
+```
+> DTP Mode의 사용법<br>
+```
+<mode의 변환>
+switchport mode dynamic [mode]
+<DTP이용 안함>
+'선행' -> Switchport mo trunk -> DTP는 Trunk mode에서 작동하므로
+switchport mode no negotiation
+```
+---
+VTP
+---
+> VTP란<br>
+```
+- VLAN Trunk Mode의 약자
+- VLAN ID 전달 Protocol
+- 복수의 Vlan ID를 VTP사용하는 모든 Software에 생성해주는 Protocol
+```
+> 필요성<br>
+```
+- 중간 스위치에 VLAN 정보다 없을 시 통신이 불가능
+- 모든 스위치엣 빠짐없이 VLAN정보가 필요하기에
+```
+> 조건<br>
+- VTP 도메인의 일치
+- 기본 Trunk 모드
+> 동작 방식<br>
+```
+1. Server에서 Vlan을 추가, 수정, 삭제
+2. Server의 VTP 설정번호의 번호가 상승(+1)시켜 다른 스위치에게 변경된 VLAN 정보와 함께 전송
+3. 수신한 VTP 프레임의 VTP 설정 번호가 더 높으면 자신의 VLAN정보를 새로운 정보로 대체
+4.수신한 VTP 프레임의 VTP 설정 번호가 동일하면 수신한 프레임을 무시
+5. 수신한 VTP 프레임의 VTP 설정 번호가 자신의 번호보다 낮으면 자신의 VTP 정보를 전송
+```
+> Mode의 종류<br>
+```
+- Server : VLAN 생성, 수정, 삭제 가능                        / VLAN 전파
+- Client : VLAN 생성, 수정, 삭제 불가 only 내용을 받아서 적용 / VLAN 적용
+- Transparent : VLAN 생성, 수정, 삭제 가능                   / VLAN 적용X(서버로부터 받은 정보)
+                                                            / 다른 Client로 받은 정보전달만(VLAN정보 전파)
+```
+> 설정 순서<br>
+```
+1. Server mode에서 도메인명과 동기화를 위한 password지정
+vtp mode sever
+vtp domain [name]
+vtp password [password]
+2. 각 mode의 VTP들어가서 password로 동기화
+vtp mode [client or Transparent)
+vtp domain [name]
+vtp password [password] -> 서버와 Vlan정보 동기화
+```
 
 
 
