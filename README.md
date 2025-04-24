@@ -3,6 +3,7 @@ NETWORK STUDY
 INDEX
 ---
 |-|-|-|
+|-|-|-|
 |Index|바로가기|-|
 |Ch.1(OSI계층)|[바로가기](./Ch.1(OSI계층))|-|
 |Ch.2(케이블링,IPv4)|[바로가기](./Ch.2(케이블링,IPv4))|-|
@@ -18,7 +19,7 @@ INDEX
 |Ch.12(Port security&DTP-VTP)|[바로가기](./Ch.12(Port%20security&DTP-VTP))|-|
 |Ch.13(EthernetChannel&L3Switch)|[바로가기](./Ch.13(EthernetChannel&L3Switch))|-|
 |Ch.14(FHRP)|[바로가기](./Ch.14(FHRP))|-|
-|NAT|[바로가기](./DOCUMENT/15)|-|
+
 ---
 > 수료증
 <img src="CCNA1.png">
