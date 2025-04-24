@@ -4,7 +4,7 @@ INDEX
 ---
 |-|-|-|
 |-|-|-|
-|Index|바로가기|-|
+|Index|경로|-|
 |Ch.1(OSI계층)|[바로가기](./Ch.1(OSI계층))|-|
 |Ch.2(케이블링,IPv4)|[바로가기](./Ch.2(케이블링,IPv4))|-|
 |Ch.3(ICMP,ARP,Routing protocol(정적))|[바로가기](./Ch.3(ICMP,ARP,Routing%20protocol(정적)))|-|
